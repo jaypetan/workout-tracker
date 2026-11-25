@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-cream: #FFF9ED;
+  --color-gold: #E8D3A8;
+  --color-gold-highlight: #E3C28B;
+  --color-taupe: #6B6254;
+  --color-ink: #211F1B;
+  --font-heading: var(--font-sora);
+  --font-body: var(--font-space-grotesk);
+}
+
+:root { color-scheme: light; }
+html { min-height: 100%; }
+body { min-height: 100%; background: #FFF9ED; color: #211F1B; font-family: var(--font-space-grotesk),sans-serif; }
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; }
+@layer components {
+  .ui-card { @apply rounded-3xl border border-stone-300 bg-white p-4; }
+  .ui-btn { @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-lg px-4 font-semibold transition-colors disabled:opacity-50; }
+  .ui-btn-primary { @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-gold px-4 font-semibold text-ink transition-colors hover:bg-gold-highlight disabled:opacity-50; }
+  .ui-btn-outline { @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-stone-300 bg-white px-4 font-semibold text-ink transition-colors hover:bg-stone-50 disabled:opacity-50; }
+  .ui-heading { @apply font-heading text-2xl font-bold tracking-tight md:text-3xl; }
+  .ui-muted { @apply text-sm text-taupe; }
+  .ui-input { @apply h-12 w-full rounded-lg border border-stone-300 bg-white px-3 text-base outline-none focus-visible:ring-2 focus-visible:ring-gold-highlight; }
+}
