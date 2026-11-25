@@ -28,7 +28,7 @@ export default function PlansPage() {
           <button
             key={i}
             aria-pressed={day === d}
-            className={`min-h-12 rounded-lg border text-sm ${day === d ? "border-taupe bg-gold font-bold" : "border-stone-300 bg-white"}`}
+            className={`min-h-12 rounded-lg border text-sm ${day === d ? "border-taupe bg-antique font-bold" : "border-stone-300 bg-white"}`}
             onClick={() => setDay(d)}
           >
             {d.slice(0, 1)}

@@ -1,26 +1,80 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-cream: #FFF9ED;
-  --color-gold: #E8D3A8;
-  --color-gold-highlight: #E3C28B;
-  --color-taupe: #6B6254;
-  --color-ink: #211F1B;
+  --color-soft: #E8D3A8;
+  --color-champagne: #E3C28B;
+  --color-antique: #C6A15B;
+  --color-taupe: #6b6254;
+  --color-ink: #211f1b;
   --font-heading: var(--font-sora);
   --font-body: var(--font-space-grotesk);
 }
 
-:root { color-scheme: light; }
-html { min-height: 100%; }
-body { min-height: 100%; background: #FFF9ED; color: #211F1B; font-family: var(--font-space-grotesk),sans-serif; }
-button { cursor: pointer; }
-button:disabled { cursor: not-allowed; }
+:root {
+  color-scheme: light;
+}
+html {
+  min-height: 100%;
+}
+body {
+  min-height: 100%;
+  background: #f6f4f1;
+  color: #111111;
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+button {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: not-allowed;
+}
 @layer components {
-  .ui-card { @apply rounded-3xl border border-stone-300 bg-white p-4; }
-  .ui-btn { @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-lg px-4 font-semibold transition-colors disabled:opacity-50; }
-  .ui-btn-primary { @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-gold px-4 font-semibold text-ink transition-colors hover:bg-gold-highlight disabled:opacity-50; }
-  .ui-btn-outline { @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-stone-300 bg-white px-4 font-semibold text-ink transition-colors hover:bg-stone-50 disabled:opacity-50; }
-  .ui-heading { @apply font-heading text-2xl font-bold tracking-tight md:text-3xl; }
-  .ui-muted { @apply text-sm text-taupe; }
-  .ui-input { @apply h-12 w-full rounded-lg border border-stone-300 bg-white px-3 text-base outline-none focus-visible:ring-2 focus-visible:ring-gold-highlight; }
+  .general-spacing {
+    @apply space-y-4;
+  }
+  .page-spacing {
+    @apply space-y-8;
+  }
+
+  .ui-card {
+    @apply rounded-3xl border border-taupe bg-white p-4;
+  }
+  .ui-btn,
+  .ui-btn-primary,
+  .ui-btn-outline {
+    @apply inline-flex text-base lg:text-lg min-h-12 items-center justify-center gap-2 rounded-lg px-4 transition-colors disabled:opacity-50;
+  }
+
+  .ui-btn-primary {
+    @apply bg-antique font-semibold text-white hover:bg-champagne;
+  }
+  .ui-btn-outline {
+    @apply border border-black bg-white text-black hover:bg-soft;
+  }
+
+  .ui-text-header {
+    @apply font-heading text-2xl font-bold md:text-3xl lg:text-4xl;
+  }
+  .ui-text-small-header {
+    @apply font-heading text-lg font-bold md:text-xl lg:text-2xl;
+  }
+  .ui-text-primary {
+    @apply font-body text-lg lg:text-xl;
+  }
+  .ui-text-secondary {
+    @apply font-body text-base;
+  }
+  .ui-text-caption {
+    @apply font-body text-xs lg:text-sm;
+  }
+
+  .ui-heading {
+    @apply font-heading text-2xl font-bold tracking-tight md:text-3xl;
+  }
+  .ui-muted {
+    @apply text-sm text-taupe;
+  }
+  .ui-input {
+    @apply h-12 w-full rounded-lg border border-stone-300 bg-white px-3 text-base outline-none focus-visible:ring-2 focus-visible:ring-antique;
+  }
 }

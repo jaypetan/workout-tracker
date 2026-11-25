@@ -1,10 +1,9 @@
 import Link from "next/link";
-import { Dumbbell } from "lucide-react";
+import Image from "next/image";
 export default function LoginPage() {
   return (
     <main className="mx-auto flex min-h-screen max-w-md flex-col justify-center gap-8 px-5">
-      <div className="space-y-3 text-center">
-        <Dumbbell size={54} className="mx-auto text-taupe" />
+      <div className="flex flex-col items-center text-center">
         <h1 className="font-heading text-5xl font-bold">
           Gym.
           <br />
@@ -12,6 +11,13 @@ export default function LoginPage() {
           <br />
           Repeat.
         </h1>
+        <Image
+          src="/images/Sign_In_Illustration.png"
+          alt="Gym Log"
+          width={1080}
+          height={676}
+          className="h-auto w-60"
+        />
         <p className="ui-muted">Your workout journey, organized.</p>
       </div>
       <div className="ui-card space-y-3">

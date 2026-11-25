@@ -7,7 +7,7 @@ export default function ProfilePage() {
         <p className="ui-muted">Account preferences and privacy</p>
       </div>
       <div className="ui-card flex items-center gap-3">
-        <div className="flex size-14 items-center justify-center rounded-full bg-gold">
+        <div className="flex size-14 items-center justify-center rounded-full bg-antique">
           <UserRound className="text-taupe" />
         </div>
         <div>
