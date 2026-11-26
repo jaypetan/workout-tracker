@@ -1,39 +1,60 @@
-import Link from "next/link";
-export default async function PlanEditor({
-  searchParams,
-}: {
+import PageHeader from "@/components/page-header";
+import FormInput from "@/components/form-input";
+import EditorActions from "@/components/plans/edit/editor-actions";
+import ExerciseList from "@/components/plans/edit/exercise-list";
+import type { PlanExercise } from "@/components/plans/edit/types";
+
+type PlanEditorProps = {
   searchParams: Promise<{ day?: string }>;
-}) {
+};
+
+const previews: Record<
+  string,
+  {
+    title: string;
+    exercises: PlanExercise[];
+  }
+> = {
+  Mon: {
+    title: "Push Day",
+    exercises: [
+      { name: "Bench Press", weight: "60", reps: "10", sets: "3" },
+      { name: "Incline Dumbbell Press", weight: "40", reps: "10", sets: "3" },
+      { name: "Lateral Raises", weight: "10", reps: "15", sets: "3" },
+    ],
+  },
+  Wed: {
+    title: "Pull Day",
+    exercises: [{ name: "Lat Pulldown", weight: "80", reps: "10", sets: "3" }],
+  },
+  Fri: {
+    title: "Leg Day",
+    exercises: [{ name: "Squat", weight: "100", reps: "8", sets: "4" }],
+  },
+};
+
+export default async function PlanEditor({ searchParams }: PlanEditorProps) {
   const { day = "Mon" } = await searchParams;
   const d = /^(Mon|Tue|Wed|Thu|Fri|Sat|Sun)$/.test(day) ? day : "Mon";
+  const { exercises } = previews[d] || previews["Mon"];
+
   return (
-    <div className="mx-auto max-w-xl space-y-5">
-      <div>
-        <h1 className="ui-heading">Edit Workout Plan</h1>
-        <p className="ui-muted">{d} · Editor placeholder</p>
-      </div>
-      <section className="ui-card space-y-4">
-        <label className="block text-sm font-semibold">
-          Plan Name
-          <input className="ui-input mt-2" placeholder="e.g. Push Day" />
-        </label>
-        <h2 className="font-heading text-lg font-semibold">Exercises</h2>
-        <p className="ui-muted">
-          Searchable exercise inputs, optional targets, Reorder Mode and Undo
-          will be added here.
-        </p>
-        <button disabled className="ui-btn-outline w-full">
-          + Add Exercise (coming next)
-        </button>
+    <div className="max-width-container page-spacing">
+      <PageHeader
+        title="Edit Workout Plan"
+        description={`${d} · Editor placeholder`}
+      />
+      <section>
+        <FormInput
+          id="plan-name"
+          label="Plan Name"
+          placeholder="e.g. Push Day"
+          labelClassName="ui-text-primary"
+          inputClassName="mt-2"
+        />
       </section>
-      <div className="sticky bottom-22 flex gap-3 rounded-xl bg-cream p-2 md:bottom-0">
-        <Link href="/plans" className="ui-btn-outline flex-1">
-          Cancel
-        </Link>
-        <button disabled className="ui-btn-primary flex-1">
-          Save Changes
-        </button>
-      </div>
+      <ExerciseList exercises={exercises} />
+      <EditorActions />
     </div>
   );
 }

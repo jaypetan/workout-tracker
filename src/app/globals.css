@@ -6,6 +6,7 @@
   --color-antique: #C6A15B;
   --color-taupe: #6b6254;
   --color-ink: #211f1b;
+  --color-input: #FFFBF3;
   --font-heading: var(--font-sora);
   --font-body: var(--font-space-grotesk);
 }
@@ -35,6 +36,9 @@ button:disabled {
   .page-spacing {
     @apply space-y-8;
   }
+  .max-width-container {
+    @apply mx-auto max-w-xl;
+  }
 
   .ui-card {
     @apply rounded-3xl border border-taupe bg-white p-4;
@@ -42,14 +46,17 @@ button:disabled {
   .ui-btn,
   .ui-btn-primary,
   .ui-btn-outline {
-    @apply inline-flex text-base lg:text-lg min-h-12 items-center justify-center gap-2 rounded-lg px-4 transition-colors disabled:opacity-50;
+    @apply inline-flex text-base lg:text-lg min-h-12 items-center justify-center gap-2 rounded-lg px-4 transition-colors disabled:opacity-50 w-full;
   }
 
   .ui-btn-primary {
     @apply bg-antique font-semibold text-white hover:bg-champagne;
   }
   .ui-btn-outline {
-    @apply border border-black bg-white text-black hover:bg-soft;
+    @apply border border-black  text-black hover:bg-soft;
+  }
+  .ui-btn-small {
+    @apply text-sm lg:text-base min-h-10 px-3 rounded-lg border border-black bg-white text-black hover:bg-soft w-full transition-colors disabled:opacity-50;
   }
 
   .ui-text-header {
@@ -75,6 +82,9 @@ button:disabled {
     @apply text-sm text-taupe;
   }
   .ui-input {
-    @apply h-12 w-full rounded-lg border border-stone-300 bg-white px-3 text-base outline-none focus-visible:ring-2 focus-visible:ring-antique;
+    @apply h-12 w-full rounded-lg border border-taupe bg-input px-3 text-base outline-none focus-visible:ring-2 focus-visible:ring-soft;
+  }
+  .ui-icon {
+    @apply h-5 w-5;
   }
 }
